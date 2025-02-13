@@ -30,7 +30,7 @@ env:
 jobs:
   drift-detection:
     name: Terraform Drift Detection - ${{ inputs.environment-name }}
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment: terraform-plan
     defaults:
       run:
