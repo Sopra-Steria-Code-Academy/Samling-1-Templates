@@ -29,7 +29,7 @@ permissions:
 jobs:
   plan:
     name: Terraform Plan - ${{ inputs.environment-name }}
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment: terraform-plan
     defaults:
       run:
