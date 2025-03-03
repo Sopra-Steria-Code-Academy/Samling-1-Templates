@@ -9,8 +9,6 @@ on:
     secrets:
       client-id:
         required: true
-      client-secret:
-        required: true
       subscription-id:
         required: true
       tenant-id:
@@ -21,7 +19,6 @@ env:
   ARM_CLIENT_ID: ${{ secrets.client-id }}
   ARM_SUBSCRIPTION_ID: ${{ secrets.subscription-id }}
   ARM_TENANT_ID: ${{ secrets.tenant-id }}
-  TF_VAR_client_secret: ${{ secrets.client-secret }}
 
 #Special permissions required for OIDC authentication
 permissions:
