@@ -16,19 +16,16 @@ on:
       tenant-id:
         required: true
 
-
-#Special permissions required for OIDC authentication
+# Add permissions for GitHub Actions to manage issues
 permissions:
-  id-token: write
   contents: read
   issues: write
 
-#These environment variables are used by the Terraform Azure provider to setup OIDC authenticate.
 env:
   ARM_CLIENT_ID: ${{ secrets.client-id }}
+  ARM_CLIENT_SECRET: ${{ secrets.client-secret }}
   ARM_SUBSCRIPTION_ID: ${{ secrets.subscription-id }}
   ARM_TENANT_ID: ${{ secrets.tenant-id }}
-  TF_VAR_client_secret: ${{ secrets.client-secret }}
 
 jobs:
   drift-detection:
@@ -38,9 +35,6 @@ jobs:
     defaults:
       run:
         working-directory: ./terraform
-    env:
-      #this is needed since we are running terraform with read-only permissions
-      ARM_SKIP_PROVIDER_REGISTRATION: true
 
     steps:
       - name: Checkout
